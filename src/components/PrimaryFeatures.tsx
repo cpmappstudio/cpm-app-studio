@@ -6,36 +6,36 @@ import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
-import backgroundImage from '@/images/background-features.jpg'
-import screenshotExpenses from '@/images/screenshots/expenses.png'
-import screenshotPayroll from '@/images/screenshots/payroll.png'
-import screenshotReporting from '@/images/screenshots/reporting.png'
-import screenshotVatReturns from '@/images/screenshots/vat-returns.png'
+import { GridPattern } from '@/components/GridPattern'
+import cpcaTeachers from '@/images/screenshots/cpca-teachers.jpeg'
+import alefUniversity from '@/images/screenshots/alef-university.jpeg'
+import dismissalApp from '@/images/screenshots/dismissal-app.jpeg'
+import cpcaSports from '@/images/screenshots/cpca-sports.jpeg'
 
 const features = [
   {
-    title: 'Payroll',
+    title: 'Alef University SRU',
     description:
-      "Keep track of everyone's salaries and whether or not they've been paid. Direct deposit not supported.",
-    image: screenshotPayroll,
+      'Architecting centralized academic ecosystems to unify programs and student records, ensuring every user enjoys seamless access to grading analytics.',
+    image: alefUniversity,
   },
   {
-    title: 'Claim expenses',
+    title: 'CPCA Teachers',
     description:
-      "All of your receipts organized into one place, as long as you don't mind typing in the data by hand.",
-    image: screenshotExpenses,
+      'Optimizing academic load distribution and faculty oversight, this module tracks real-time teaching progress and syllabus completion across every assigned section.',
+    image: cpcaTeachers,
   },
   {
-    title: 'VAT handling',
+    title: 'CPCA Sports',
     description:
-      "We only sell our software to companies who don't deal with VAT at all, so technically we do all the VAT stuff they need.",
-    image: screenshotVatReturns,
+      'Deploying custom digital infrastructure that automates school enrollments and fee collection, allowing institutions to scale their impact without administrative overhead.',
+    image: cpcaSports,
   },
   {
-    title: 'Reporting',
+    title: 'Dismissal APP',
     description:
-      'Easily export your data into an Excel spreadsheet where you can do whatever the hell you want with it.',
-    image: screenshotReporting,
+      'Leveraging real-time protocols for secure student release, our system coordinates end-of-day pickups to provide parents and staff with total peace of mind.',
+    image: dismissalApp,
   },
 ]
 
@@ -63,24 +63,21 @@ export function PrimaryFeatures() {
     <section
       id="features"
       aria-label="Features for running your books"
-      className="relative overflow-hidden bg-blue-600 pt-20 pb-28 sm:py-32"
+      className="relative isolate overflow-hidden bg-neutral-950 pt-20 pb-28 sm:py-32"
     >
-      <Image
-        className="absolute top-1/2 left-1/2 max-w-none translate-x-[-44%] translate-y-[-42%]"
-        src={backgroundImage}
-        alt=""
-        width={2245}
-        height={1636}
-        unoptimized
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.16),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_32%)]" />
+      <GridPattern
+        className="absolute inset-0 -z-10 h-full w-full mask-[linear-gradient(to_bottom_left,white_35%,transparent_65%)] fill-white/[0.02] stroke-white/10"
+        yOffset={-96}
       />
       <Container className="relative">
         <div className="max-w-2xl md:mx-auto md:text-center xl:max-w-none">
           <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl md:text-5xl">
-            Everything you need to run your books.
+            Built for scale. <br/> Designed for education.
           </h2>
-          <p className="mt-6 text-lg tracking-tight text-blue-100">
-            Well everything you need if you aren’t that picky about minor
-            details like tax compliance.
+          <p className="mt-6 text-lg tracking-tight text-neutral-300">
+            Streamline your institutional operations with our suite of
+            specialized solutions.
           </p>
         </div>
         <TabGroup
@@ -95,10 +92,10 @@ export function PrimaryFeatures() {
                     <div
                       key={feature.title}
                       className={clsx(
-                        'group relative rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6',
+                        'group relative rounded-full px-4 py-1 transition lg:rounded-l-xl lg:rounded-r-none lg:p-6',
                         selectedIndex === featureIndex
-                          ? 'bg-white lg:bg-white/10 lg:ring-1 lg:ring-white/10 lg:ring-inset'
-                          : 'hover:bg-white/10 lg:hover:bg-white/5',
+                          ? 'bg-white text-neutral-950 lg:bg-white/10 lg:text-white lg:ring-1 lg:ring-white/10 lg:ring-inset'
+                          : 'hover:bg-white/10',
                       )}
                     >
                       <h3>
@@ -106,8 +103,8 @@ export function PrimaryFeatures() {
                           className={clsx(
                             'font-display text-lg data-selected:not-data-focus:outline-hidden',
                             selectedIndex === featureIndex
-                              ? 'text-blue-600 lg:text-white'
-                              : 'text-blue-100 hover:text-white lg:text-white',
+                              ? 'text-neutral-950 lg:text-white'
+                              : 'text-neutral-300 hover:text-white lg:text-white',
                           )}
                         >
                           <span className="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none" />
@@ -119,7 +116,7 @@ export function PrimaryFeatures() {
                           'mt-2 hidden text-sm lg:block',
                           selectedIndex === featureIndex
                             ? 'text-white'
-                            : 'text-blue-100 group-hover:text-white',
+                            : 'text-neutral-400 group-hover:text-white',
                         )}
                       >
                         {feature.description}
@@ -132,12 +129,12 @@ export function PrimaryFeatures() {
                 {features.map((feature) => (
                   <TabPanel key={feature.title} unmount={false}>
                     <div className="relative sm:px-6 lg:hidden">
-                      <div className="absolute -inset-x-4 -top-26 -bottom-17 bg-white/10 ring-1 ring-white/10 ring-inset sm:inset-x-0 sm:rounded-t-xl" />
-                      <p className="relative mx-auto max-w-2xl text-base text-white sm:text-center">
+                      <div className="absolute -inset-x-4 -top-26 -bottom-17 bg-white/5 ring-1 ring-white/10 ring-inset sm:inset-x-0 sm:rounded-t-xl" />
+                      <p className="relative mx-auto max-w-2xl text-base text-neutral-200 sm:text-center">
                         {feature.description}
                       </p>
                     </div>
-                    <div className="mt-10 w-180 overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-271.25">
+                    <div className="mt-10 w-180 overflow-hidden rounded-xl bg-neutral-100 shadow-2xl ring-1 shadow-black/30 ring-black/5 sm:w-auto lg:mt-0 lg:w-271.25">
                       <Image
                         className="w-full"
                         src={feature.image}

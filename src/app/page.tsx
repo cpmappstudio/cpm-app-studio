@@ -1,58 +1,88 @@
 import { type Metadata } from 'next'
-import Image from 'next/image'
+import Image, { type StaticImageData } from 'next/image'
 import Link from 'next/link'
 
 import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
+import { GridPattern } from '@/components/GridPattern'
 import { List, ListItem } from '@/components/List'
 import { SectionIntro } from '@/components/SectionIntro'
 import { StylizedImage } from '@/components/StylizedImage'
 import { Testimonial } from '@/components/Testimonial'
+import logoAlefUniversity from '@/images/clients/alef-university.png'
 import logoBrightPath from '@/images/clients/bright-path/logo-light.svg'
-import logoFamilyFund from '@/images/clients/family-fund/logo-light.svg'
-import logoGreenLife from '@/images/clients/green-life/logo-light.svg'
-import logoHomeWork from '@/images/clients/home-work/logo-light.svg'
-import logoMailSmirk from '@/images/clients/mail-smirk/logo-light.svg'
-import logoNorthAdventures from '@/images/clients/north-adventures/logo-light.svg'
-import logoPhobiaDark from '@/images/clients/phobia/logo-dark.svg'
-import logoPhobiaLight from '@/images/clients/phobia/logo-light.svg'
-import logoUnseal from '@/images/clients/unseal/logo-light.svg'
+import logoCPCASports from '@/images/clients/cpca-sports.png'
+import logoCPCATeachers from '@/images/clients/cpca-teachers.png'
+import logoSaborealoBakery from '@/images/clients/saborealo-bakery.png'
 import imageLaptop from '@/images/laptop.jpg'
 import { type CaseStudy, type MDXEntry, loadCaseStudies } from '@/lib/mdx'
 import { RootLayout } from '@/components/RootLayout'
 import { PrimaryFeatures } from '@/components/PrimaryFeatures'
 
-const clients = [
-  ['Phobia', logoPhobiaLight],
-  ['Family Fund', logoFamilyFund],
-  ['Unseal', logoUnseal],
-  ['Mail Smirk', logoMailSmirk],
-  ['Home Work', logoHomeWork],
-  ['Green Life', logoGreenLife],
-  ['Bright Path', logoBrightPath],
-  ['North Adventures', logoNorthAdventures],
+const clients: Array<{
+  name: string
+  logo: StaticImageData
+  href: string
+  imageClassName?: string
+}> = [
+  {
+    name: 'CPCA Sports',
+    logo: logoCPCASports,
+    href: 'https://x.com/CPCASPORTS',
+    imageClassName: 'h-30',
+  },
+  {
+    name: 'Alef University',
+    logo: logoAlefUniversity,
+    href: 'https://www.alef.university/en',
+  },
+  {
+    name: 'CPCA Teachers',
+    logo: logoCPCATeachers,
+    href: 'https://learningcenter.centralpointeacademy.com',
+  },
+  // {
+  //   name: 'Saborealo Bakery',
+  //   logo: logoSaborealoBakery,
+  //   href: 'https://saborealobakery.com/',
+  // },
 ]
 
 function Clients() {
   return (
-    <div className="mt-24 rounded-4xl bg-neutral-950 py-20 sm:mt-32 sm:py-32 lg:mt-56">
-      <Container>
+    <div className="relative isolate mt-24 overflow-hidden rounded-4xl bg-neutral-950 py-20 sm:mt-32 sm:py-32 lg:mt-56">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.16),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_32%)]" />
+      <Container className="relative">
         <FadeIn className="flex items-center gap-x-8">
           <h2 className="text-center font-display text-sm font-semibold tracking-wider text-white sm:text-left">
-            We’ve worked with hundreds of amazing people
+            Trusted by leading educational institutions
           </h2>
           <div className="h-px flex-auto bg-neutral-800" />
         </FadeIn>
         <FadeInStagger faster>
           <ul
             role="list"
-            className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-4"
+            className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3"
           >
-            {clients.map(([client, logo]) => (
-              <li key={client}>
+            {clients.map((client) => (
+              <li key={client.name}>
                 <FadeIn>
-                  <Image src={logo} alt={client} unoptimized />
+                  <a
+                    href={client.href}
+                    aria-label={`Visit ${client.name}`}
+                    className="block rounded-3xl outline-hidden transition-transform duration-500 ease-out hover:-translate-y-1 focus-visible:-translate-y-1 focus-visible:ring-2 focus-visible:ring-white/40"
+                  >
+                    <div className="flex h-28 items-center justify-center px-6 py-5">
+                      <Image
+                        src={client.logo}
+                        alt={client.name}
+                        unoptimized
+                        sizes="(min-width: 1280px) 12rem, (min-width: 1024px) 16rem, (min-width: 640px) 20rem, 100vw"
+                        className={`${client.imageClassName ?? 'h-20'} w-full object-contain object-center`}
+                      />
+                    </div>
+                  </a>
                 </FadeIn>
               </li>
             ))}
@@ -187,27 +217,26 @@ export default async function Home() {
       <Container className="mt-24 sm:mt-32 md:mt-56">
         <FadeIn className="max-w-3xl">
           <h1 className="font-display text-5xl font-medium tracking-tight text-balance text-neutral-950 sm:text-7xl">
-            Award-winning development studio based in Denmark.
+            Powering the Future of Learning
           </h1>
           <p className="mt-6 text-xl text-neutral-600">
-            We are a development studio working at the intersection of design
-            and technology. It’s a really busy intersection though — a lot of
-            our staff have been involved in hit and runs.
+            We are providers of web development solutions that scale with your
+            institution, from universities to growing K-12 schools.
           </p>
         </FadeIn>
       </Container>
 
       <Clients />
 
-      <CaseStudies caseStudies={caseStudies} />
+      {/* <CaseStudies caseStudies={caseStudies} /> */}
 
       <Testimonial
         className="mt-24 sm:mt-32 lg:mt-40"
-        client={{ name: 'Phobia', logo: logoPhobiaDark }}
+        // client={{ name: 'Phobia', logo: logoBrightPath }}
       >
-        The team at Studio went above and beyond with our onboarding, even
-        finding a way to access the user’s microphone without triggering one of
-        those annoying permission dialogs.
+        Our team goes above and beyond to simplify complex academic workflows,
+        building intuitive interfaces that feel natural for teachers, students,
+        and parents alike.
       </Testimonial>
 
       <PrimaryFeatures />

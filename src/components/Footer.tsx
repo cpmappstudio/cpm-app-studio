@@ -9,17 +9,9 @@ const navigation = [
   {
     title: 'Work',
     links: [
-      { title: 'FamilyFund', href: '/work/family-fund' },
-      { title: 'Unseal', href: '/work/unseal' },
-      { title: 'Phobia', href: '/work/phobia' },
-      {
-        title: (
-          <>
-            See all <span aria-hidden="true">&rarr;</span>
-          </>
-        ),
-        href: '/work',
-      },
+      { title: 'Alef University', href: '/work/alef-university' },
+      { title: 'Central Pointe Sports', href: '/work/unseal' },
+      { title: 'Central Pointe Christian Academy', href: '/work/phobia' },
     ],
   },
   {
@@ -114,18 +106,15 @@ export function Footer() {
   return (
     <Container as="footer" className="mt-24 w-full sm:mt-32 lg:mt-40">
       <FadeIn>
-        <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">
+        <div className="gap-x-8 gap-y-16">
           <Navigation />
-          <div className="flex lg:justify-end">
-            <NewsletterForm />
-          </div>
         </div>
         <div className="mt-24 mb-20 flex flex-wrap items-end justify-between gap-x-6 gap-y-4 border-t border-neutral-950/10 pt-12">
           <Link href="/" aria-label="Home">
             <Logo className="h-8" fillOnHover />
           </Link>
           <p className="text-sm text-neutral-700">
-            © Studio Agency Inc. {new Date().getFullYear()}
+            © CPM Studio. {new Date().getFullYear()}
           </p>
         </div>
       </FadeIn>
