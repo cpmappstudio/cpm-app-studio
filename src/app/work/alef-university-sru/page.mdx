@@ -1,0 +1,58 @@
+import logo from '@/images/clients/family-fund/logomark-dark.svg'
+import imageHero from './hero.jpeg'
+import imageDebraFiscal from './debra-fiscal.jpg'
+
+export const caseStudy = {
+  client: 'Alef University',
+  title: 'Academic operations, finally under one roof',
+  description:
+    'Alef University is a bilingual student information system for running academic operations end to end. It brings students, professors, administrators, records, and digital library workflows into one role-aware platform.',
+  summary: [
+    'A full-stack SIS built with Next.js, React, TypeScript, Convex, and Clerk, combining academic management, grading, reporting, and digital library operations in one product.',
+    'The platform unifies 3 role-based experiences, 2 interface languages, 6 academic periods per year, and a 12-band grading model inside a single coherent system.',
+  ],
+  logo,
+  image: { src: imageHero },
+  date: '2025-09',
+  service: 'Web development, Academic systems design',
+  testimonial: {
+    author: { name: 'Mariana Velez', role: 'Director of Academic Operations' },
+    content:
+      'Alef brought operational clarity to the institution. What used to live across disconnected workflows now moves through one deliberate academic system.',
+  },
+}
+
+export const metadata = {
+  title: `${caseStudy.client} Case Study`,
+  description: caseStudy.description,
+}
+
+## Overview
+
+Alef University needed more than a polished dashboard. The product had to coordinate the daily realities of an academic institution: student records, program structures, course catalogs, grading, enrollment, documentation, and an expanding digital library, all while serving students, professors, and administrators from the same codebase.
+
+We built the platform as a bilingual, role-aware system on Next.js 15, React 19, TypeScript, Convex, and Clerk. That stack made it possible to pair a fast frontend with real-time backend queries, authenticated workflows, and a navigation model that reshapes itself by role, while `next-intl`, Tailwind CSS 4, and shadcn/ui kept the experience consistent across English and Spanish.
+
+Some of the most elegant work happens beneath the interface. Class and bimester status are computed from dates in real time rather than maintained manually, grades are translated into a 12-band American letter scale with a 65% passing threshold, and the library pipeline can enrich uploaded PDF records through ISBN lookups, Open Library, Google Books, and sampled OpenAI extraction when metadata is incomplete.
+
+## What we did
+
+<TagList>
+  <TagListItem>Next.js 15</TagListItem>
+  <TagListItem>React 19</TagListItem>
+  <TagListItem>TypeScript</TagListItem>
+  <TagListItem>Convex backend</TagListItem>
+  <TagListItem>Clerk authentication</TagListItem>
+  <TagListItem>next-intl localization</TagListItem>
+  <TagListItem>Tailwind CSS 4</TagListItem>
+  <TagListItem>shadcn/ui</TagListItem>
+  <TagListItem>PDF reporting</TagListItem>
+  <TagListItem>Library metadata extraction</TagListItem>
+</TagList>
+
+<Blockquote
+  author={caseStudy.testimonial.author}
+  image={{ src: imageDebraFiscal }}
+>
+  {caseStudy.testimonial.content}
+</Blockquote>

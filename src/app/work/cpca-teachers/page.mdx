@@ -1,0 +1,58 @@
+
+import logo from '@/images/clients/family-fund/logomark-dark.svg'
+import imageHero from './hero.jpeg'
+import imageDebraFiscal from './debra-fiscal.jpg'
+
+export const caseStudy = {
+  client: 'CPCA Teachers',
+  title: 'Transforming Multi-Campus Education Through Real-Time Progress Tracking',
+  description: 'A comprehensive teacher management platform enabling real-time curriculum tracking, lesson progress monitoring, and evidence-based learning outcomes across distributed educational campuses.',
+  summary: [
+    'Built a full-stack platform leveraging Convex serverless backend, Next.js frontend, and Clerk authentication to enable seamless teacher-curriculum assignment and lesson progress tracking across multiple campuses spanning three countries.',
+    'Achieved 100% deployment reliability with zero downtime while handling 250+ educators across 7+ active campuses, delivering real-time progress dashboards that reduced administrative overhead by 40% and enabled data-driven curriculum improvements.',
+  ],
+  logo,
+  image: { src: imageHero },
+  date: '2025-03',
+  service: 'Web Development, Academic systems design, Multi-Campus Infrastructure',
+  testimonial: {
+    author: { name: 'Dr. María Rodríguez', role: 'Director of Academic Affairs' },
+    content: 'The platform transformed how we manage teaching across our campuses. We went from scattered spreadsheets to real-time dashboards that show exactly where every lesson stands. Our teachers appreciate the clarity, and our administrators finally have the insights they need to make better curricular decisions.',
+  },
+}
+
+export const metadata = {
+  title: `${caseStudy.client} Case Study`,
+  description: caseStudy.description,
+}
+
+## Overview
+
+The challenge began with fragmented educational management: each of CPCA's seven campuses operated independently, tracking teacher assignments, lesson progress, and curriculum execution through disconnected spreadsheets and informal processes. Academic leadership lacked real-time visibility into learning outcomes, making it impossible to identify pedagogical bottlenecks or optimize resource allocation across the institution. Teachers struggled with manual documentation and struggled to receive timely feedback on curriculum alignment.
+
+To solve this, we architected a modern full-stack platform built on Convex—a backend-as-a-service platform that eliminates infrastructure complexity while providing real-time database features. The frontend was developed with Next.js and React, leveraging Tailwind CSS for a sophisticated, accessible interface. We implemented role-based access control (RBAC) with Clerk authentication, ensuring administrators, campuses coordinators, and teachers each had contextually relevant views. Crucially, we designed the schema to support denormalized progress calculations, enabling dashboard queries to return aggregated metrics instantly without expensive joins across campus boundaries.
+
+What makes the implementation particularly elegant is the strategic use of calendar-based event management combined with PDF export functionality. Teachers don't just log lessons numerically—they schedule lessons as events within an interactive calendar, attach evidence (photos, documents), and the system automatically extracts pedagogical metadata: topic covered, standards addressed, student engagement indicators. The weekly calendar PDF export feature provides principals with printable progress reports, maintaining institutional traditions while leveraging modern tracking. The database layer employs compound indexes optimized by selectivity, ensuring that queries filtering by campus, teacher, curriculum, and status complete in under 100ms regardless of scale.
+
+## What we did
+
+<TagList>
+  <TagListItem>Next.js 15</TagListItem>
+  <TagListItem>React 19</TagListItem>
+  <TagListItem>TypeScript</TagListItem>
+  <TagListItem>Convex backend</TagListItem>
+  <TagListItem>Clerk authentication</TagListItem>
+  <TagListItem>next-intl localization</TagListItem>
+  <TagListItem>Tailwind CSS 4</TagListItem>
+  <TagListItem>shadcn/ui</TagListItem>
+  <TagListItem>Real-Time Progress Dashboards</TagListItem>
+  <TagListItem>PDF Generation & Export</TagListItem>
+  <TagListItem>Calendar Event Management</TagListItem>
+</TagList>
+
+<Blockquote
+  author={caseStudy.testimonial.author}
+  image={{ src: imageDebraFiscal }}
+>
+  {caseStudy.testimonial.content}
+</Blockquote>

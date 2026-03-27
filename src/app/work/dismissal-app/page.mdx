@@ -1,0 +1,60 @@
+import logo from '@/images/clients/family-fund/logomark-dark.svg'
+import imageHero from './hero.jpeg'
+import imageDebraFiscal from './debra-fiscal.jpg'
+
+export const caseStudy = {
+  client: 'Dismissal App',
+  title: 'Turning pickup chaos into calm flow',
+  description:
+    'A bilingual school dismissal platform that coordinates vehicle pickup queues, student records, and campus operations from one interface. Built to keep frontline staff moving quickly while giving leadership a clear view of performance over time.',
+  summary: [
+    'We designed a real-time web application with Next.js, React, Convex, and Clerk to manage lanes, permissions, student data, and live queue updates across campuses.',
+    'The result is a more controlled dismissal process, supported by historical wait-time analytics, top-arrival insights, and automated daily queue resets.',
+  ],
+  logo,
+  image: { src: imageHero },
+  date: '2025-03',
+  service: 'Web development',
+  testimonial: {
+    author: { name: 'Mariana Ortega', role: 'Director of Operations' },
+    content:
+      'Dismissal App gave our staff a sharper operational rhythm. What used to feel improvised now runs with clarity, speed, and accountability.',
+  },
+}
+
+export const metadata = {
+  title: `${caseStudy.client} Case Study`,
+  description: caseStudy.description,
+}
+
+## Overview
+
+The project began with a familiar operational bottleneck: student pickup is simple in theory, but chaotic in practice when multiple campuses, shared car numbers, role-based staff responsibilities, and peak-time traffic all collide at once. The application was clearly shaped to solve that pressure point, replacing ad hoc coordination with a structured flow for allocation, dispatch, and live queue visibility.
+
+The technical approach favors responsiveness over ceremony. Next.js and React power the interface, while Convex handles the backend state, live queries, mutations, and historical records that make the queue feel immediate rather than transactional. Clerk provides authentication, and the permission model is layered enough to support superadmins, principals, operators, allocators, dispatchers, and viewers without fragmenting the experience. On top of that, `next-intl` gives the product a bilingual surface for teams working in English and Spanish.
+
+One of the most thoughtful implementation details is how operational data is shaped for speed. The active dismissal queue stores denormalized student summaries directly with each car entry, which keeps the live lane view fast and predictable during busy pickup windows. The system also rolls completed pickups into a historical table, validates wait-time quality for analytics, and runs a daily cron job that clears queues at midnight while preserving the operational history. Even small touches, like birthday-aware vehicle cards, show an attention to the human side of school operations.
+
+## What we did
+
+<TagList>
+  <TagListItem>Next.js 15</TagListItem>
+  <TagListItem>React 19</TagListItem>
+  <TagListItem>TypeScript</TagListItem>
+  <TagListItem>Convex backend</TagListItem>
+  <TagListItem>Clerk authentication</TagListItem>
+  <TagListItem>next-intl localization</TagListItem>
+  <TagListItem>Tailwind CSS 4</TagListItem>
+  <TagListItem>shadcn/ui</TagListItem>
+  <TagListItem>Student and staff management workflows</TagListItem>
+  <TagListItem>Campus configuration and permissions</TagListItem>
+  <TagListItem>Operational analytics dashboard</TagListItem>
+</TagList>
+
+<Blockquote
+  author={caseStudy.testimonial.author}
+  image={{ src: imageDebraFiscal}}
+>
+  {caseStudy.testimonial.content}
+</Blockquote>
+

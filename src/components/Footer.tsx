@@ -9,9 +9,10 @@ const navigation = [
   {
     title: 'Work',
     links: [
-      { title: 'Alef University', href: '/work/alef-university' },
-      { title: 'Central Pointe Sports', href: '/work/unseal' },
-      { title: 'Central Pointe Christian Academy', href: '/work/phobia' },
+      { title: 'Alef University SRU', href: '/work/alef-university-sru' },
+      { title: 'CPCA Teachers', href: '/work/cpca-teachers' },
+      { title: 'CPCA Sports', href: '/work/cpca-sports' },
+      { title: 'Dismissal APP', href: '/work/dismissal-app' },
     ],
   },
   {

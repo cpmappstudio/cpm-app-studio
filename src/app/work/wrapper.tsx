@@ -19,6 +19,14 @@ export default async function CaseStudyLayout({
   let moreCaseStudies = allCaseStudies
     .filter(({ metadata }) => metadata !== caseStudy)
     .slice(0, 2)
+    .map((study) => ({
+      href: study.href,
+      title: study.title,
+      description: study.summary[0] ?? study.description,
+      eyebrow: study.client,
+      meta: study.service,
+      ctaLabel: 'View case study',
+    }))
 
   return (
     <RootLayout>

@@ -1,0 +1,59 @@
+import logo from '@/images/clients/family-fund/logomark-dark.svg'
+import imageHero from './hero.jpeg'
+import imageDebraFiscal from './debra-fiscal.jpg'
+
+export const caseStudy = {
+  client: 'CPCA Sports',
+  title: 'Modern admissions for ambitious sports programs',
+  description:
+    'A multitenant admissions and payments platform for sports organizations, built to manage pre-admission, review, documents, and fee collection in one place.',
+  summary: [
+    'We designed and built a tenant-aware Next.js application with Clerk, Convex, and Square, unifying public intake, internal review, document workflows, and billing.',
+    'The result was a bilingual operational system that turned a fragmented admissions process into a single auditable path from application to payment.',
+  ],
+  logo,
+  image: { src: imageHero },
+  date: '2026-01',
+  service: 'Web development, Admissions system design, Payment Integration',
+  testimonial: {
+    author: { name: 'Mariana Torres', role: 'Admissions Director' },
+    content:
+      'What used to live across forms, spreadsheets, and follow-up calls now moves through one clear workflow our staff can trust.',
+  },
+}
+
+export const metadata = {
+  title: `${caseStudy.client} Case Study`,
+  description: caseStudy.description,
+}
+
+## Overview
+
+CPCA Sports needed to replace a patchwork of manual admissions tasks with a platform that felt coherent from the first interaction. Each organization required its own tenant-aware experience, but the operational burden behind the scenes had to remain centralized, structured, and easy for internal teams to manage. The challenge was not simply collecting applications. It was carrying a student-athlete from pre-admission to financial follow-through without losing context along the way.
+
+The solution was a multitenant web platform built with Next.js on the frontend, Clerk for authentication and role-aware access, and Convex for the backend, database, and reactive workflows. That stack made sense for the shape of the problem: admissions teams needed fast internal tools, applicants needed a guided public flow, and the product needed a clean domain model around organizations, applications, fees, and transactions. Square closed the loop on payments, allowing the platform to support both online checkout links and staff-recorded offline payments inside the same operational surface.
+
+One of the more exacting parts of the implementation lives in the business logic rather than the interface. Recurring fees are generated from date ranges, due-day rules, and IANA time zones so installment schedules remain predictable even across shorter months, while uploaded documents are stored in Convex Storage and controlled through per-application visibility settings. The project also includes migration tooling from a legacy Laravel and MySQL system, which made the new platform practical not only to launch, but to adopt.
+
+## What we did
+
+<TagList>
+  <TagListItem>Next.js 15</TagListItem>
+  <TagListItem>React 19</TagListItem>
+  <TagListItem>TypeScript</TagListItem>
+  <TagListItem>Convex backend</TagListItem>
+  <TagListItem>Clerk authentication</TagListItem>
+  <TagListItem>next-intl localization</TagListItem>
+  <TagListItem>Tailwind CSS 4</TagListItem>
+  <TagListItem>shadcn/ui</TagListItem>
+  <TagListItem>Multitenant platform design</TagListItem>
+  <TagListItem>Square payment integration</TagListItem>
+  <TagListItem>Document upload and review workflows</TagListItem>
+</TagList>
+
+<Blockquote
+  author={caseStudy.testimonial.author}
+  image={{ src: imageDebraFiscal }}
+>
+  {caseStudy.testimonial.content}
+</Blockquote>
