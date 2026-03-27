@@ -22,9 +22,12 @@ function ArrowIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 interface Page {
   href: string
-  date: string
+  date?: string
   title: string
   description: string
+  eyebrow?: string
+  meta?: string
+  ctaLabel?: string
 }
 
 function PageLink({ page }: { page: Page }) {
@@ -34,22 +37,36 @@ function PageLink({ page }: { page: Page }) {
         position="left"
         className="relative flex flex-col items-start pl-8"
       >
+        {page.eyebrow && (
+          <p className="text-sm font-semibold text-neutral-950">
+            {page.eyebrow}
+          </p>
+        )}
         <h3 className="mt-6 text-base font-semibold text-neutral-950">
           {page.title}
         </h3>
-        <time
-          dateTime={page.date}
-          className="order-first text-sm text-neutral-600"
-        >
-          {formatDate(page.date)}
-        </time>
+        {page.date && (
+          <time
+            dateTime={page.date}
+            className={
+              page.eyebrow
+                ? 'mt-2 text-sm text-neutral-600'
+                : 'order-first text-sm text-neutral-600'
+            }
+          >
+            {formatDate(page.date)}
+          </time>
+        )}
+        {page.meta && (
+          <p className="mt-2 text-sm text-neutral-600">{page.meta}</p>
+        )}
         <p className="mt-2.5 text-base text-neutral-600">{page.description}</p>
         <Link
           href={page.href}
           className="mt-6 flex gap-x-3 text-base font-semibold text-neutral-950 transition hover:text-neutral-700"
-          aria-label={`Read more: ${page.title}`}
+          aria-label={`${page.ctaLabel ?? 'Read more'}: ${page.title}`}
         >
-          Read more
+          {page.ctaLabel ?? 'Read more'}
           <ArrowIcon className="w-6 flex-none fill-current" />
           <span className="absolute inset-0" />
         </Link>
