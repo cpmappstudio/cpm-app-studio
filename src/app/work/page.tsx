@@ -1,5 +1,5 @@
 import { type Metadata } from 'next'
-import Image from 'next/image'
+import Image, { type StaticImageData } from 'next/image'
 import Link from 'next/link'
 
 import { Blockquote } from '@/components/Blockquote'
@@ -10,7 +10,9 @@ import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { PageIntro } from '@/components/PageIntro'
 import { Testimonial } from '@/components/Testimonial'
-import logoBrightPath from '@/images/clients/bright-path/logo-dark.svg'
+import logoAlefUniversity from '@/images/clients/alef-university.png'
+import logoCPCASports from '@/images/clients/cpca-sports.png'
+import logoCPCATeachers from '@/images/clients/cpca-teachers.png'
 import { formatDate } from '@/lib/formatDate'
 import { type CaseStudy, type MDXEntry, loadCaseStudies } from '@/lib/mdx'
 import { RootLayout } from '@/components/RootLayout'
@@ -24,7 +26,7 @@ function CaseStudies({
     <Container className="mt-40">
       <FadeIn>
         <h2 className="font-display text-2xl font-semibold text-neutral-950">
-          Case studies
+          Selected case studies
         </h2>
       </FadeIn>
       <div className="mt-10 space-y-20 sm:space-y-24 lg:space-y-32">
@@ -34,12 +36,14 @@ function CaseStudies({
               <Border className="grid grid-cols-3 gap-x-8 gap-y-8 pt-16">
                 <div className="col-span-full sm:flex sm:items-center sm:justify-between sm:gap-x-8 lg:col-span-1 lg:block">
                   <div className="sm:flex sm:items-center sm:gap-x-6 lg:block">
-                    <Image
-                      src={caseStudy.logo}
-                      alt=""
-                      className="h-16 w-16 flex-none"
-                      unoptimized
-                    />
+                    <div className="flex h-16 w-32 flex-none items-center">
+                      <Image
+                        src={caseStudy.logo}
+                        alt=""
+                        className="h-10 w-full object-contain object-left"
+                        unoptimized
+                      />
+                    </div>
                     <h3 className="mt-6 text-sm font-semibold text-neutral-950 sm:mt-0 lg:mt-8">
                       {caseStudy.client}
                     </h3>
@@ -72,14 +76,14 @@ function CaseStudies({
                       Read case study
                     </Button>
                   </div>
-                  {caseStudy.testimonial && (
+                  {/* {caseStudy.testimonial && (
                     <Blockquote
                       author={caseStudy.testimonial.author}
                       className="mt-12"
                     >
                       {caseStudy.testimonial.content}
                     </Blockquote>
-                  )}
+                  )} */}
                 </div>
               </Border>
             </article>
@@ -90,8 +94,10 @@ function CaseStudies({
   )
 }
 
-const clients = [
-  ['Bright Path', logoBrightPath],
+const clients: Array<{ name: string; logo: StaticImageData }> = [
+  { name: 'Alef University', logo: logoAlefUniversity },
+  { name: 'CPCA Sports', logo: logoCPCASports },
+  { name: 'CPCA Teachers', logo: logoCPCATeachers },
 ]
 
 function Clients() {
@@ -99,7 +105,7 @@ function Clients() {
     <Container className="mt-24 sm:mt-32 lg:mt-40">
       <FadeIn>
         <h2 className="font-display text-2xl font-semibold text-neutral-950">
-          You’re in good company
+          Trusted by education teams building with intention
         </h2>
       </FadeIn>
       <FadeInStagger className="mt-10" faster>
@@ -108,11 +114,11 @@ function Clients() {
           role="list"
           className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 lg:grid-cols-4"
         >
-          {clients.map(([client, logo]) => (
-            <li key={client} className="group">
+          {clients.map((client) => (
+            <li key={client.name} className="group">
               <FadeIn className="overflow-hidden">
                 <Border className="pt-12 group-nth-[-n+2]:-mt-px sm:group-nth-3:-mt-px lg:group-nth-4:-mt-px">
-                  <Image src={logo} alt={client} unoptimized />
+                  <Image src={client.logo} alt={client.name} unoptimized />
                 </Border>
               </FadeIn>
             </li>
@@ -124,9 +130,9 @@ function Clients() {
 }
 
 export const metadata: Metadata = {
-  title: 'Our Work',
+  title: 'Case studies',
   description:
-    'We believe in efficiency and maximizing our resources to provide the best value to our clients.',
+    'We design and build operational software for schools, universities, and education teams that need clarity, speed, and scalable workflows.',
 }
 
 export default async function Work() {
@@ -135,13 +141,14 @@ export default async function Work() {
   return (
     <RootLayout>
       <PageIntro
-        eyebrow="Our work"
-        title="Proven solutions for real-world problems."
+        eyebrow="Case studies"
+        title="Software that brings clarity to complex educational operations."
       >
         <p>
-          We believe in efficiency and maximizing our resources to provide the
-          best value to our clients. The primary way we do that is by re-using
-          the same five projects we’ve been developing for the past decade.
+          Our work is centered on institutions that cannot afford operational
+          friction. From admissions and academic management to teacher tracking
+          and student pickup, we design platforms that turn fragmented processes
+          into clear, dependable systems people can actually use every day.
         </p>
       </PageIntro>
 
@@ -149,13 +156,15 @@ export default async function Work() {
 
       <Testimonial
         className="mt-24 sm:mt-32 lg:mt-40"
-        client={{ name: 'Mail Smirk', logo: logoBrightPath }}
+        // client={{ name: 'Alef University', logo: logoAlefUniversity }}
       >
-        We approached <em>Studio</em> because we loved their past work. They
-        delivered something remarkably similar in record time.
+        The strongest products in this portfolio all share the same goal:
+        helping educational teams move faster with better visibility, stronger
+        workflows, and software that feels aligned with how their institution
+        actually operates.
       </Testimonial>
 
-      <Clients />
+      {/* <Clients /> */}
 
       <ContactSection />
     </RootLayout>

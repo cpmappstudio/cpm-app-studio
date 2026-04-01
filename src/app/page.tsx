@@ -205,8 +205,9 @@ function Services() {
 }
 
 export const metadata: Metadata = {
+  title: 'Home',
   description:
-    'We are a development studio working at the intersection of design and technology.',
+    'CPM Studio designs and builds operational software for schools, universities, and education teams.',
 }
 
 export default async function Home() {

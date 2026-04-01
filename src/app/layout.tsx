@@ -4,8 +4,8 @@ import '@/styles/tailwind.css'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Studio',
-    default: 'CPM Studio - Educational Digital Solutions',
+    template: '%s - CPM Studio',
+    default: 'CPM Studio',
   },
 }
 
