@@ -4,6 +4,7 @@ import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { Logo } from '@/components/Logo'
 import { socialMediaProfiles } from '@/components/SocialMedia'
+import { title } from 'process'
 
 const navigation = [
   {
@@ -18,16 +19,15 @@ const navigation = [
   {
     title: 'Company',
     links: [
-      { title: 'About', href: '/about' },
-      { title: 'Process', href: '/process' },
-      { title: 'Blog', href: '/blog' },
+      { title: 'About us', href: '/about' },
+      { title: 'Our work', href: '/work' },
       { title: 'Contact us', href: '/contact' },
     ],
   },
-  {
-    title: 'Connect',
-    links: socialMediaProfiles,
-  },
+  // {
+  //   title: 'Connect',
+  //   links: socialMediaProfiles,
+  // },
 ]
 
 function Navigation() {

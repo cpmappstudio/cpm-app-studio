@@ -241,9 +241,9 @@ function Values() {
 }
 
 export const metadata: Metadata = {
-  title: 'Our Process',
+  title: 'Our process',
   description:
-    'We believe in efficiency and maximizing our resources to provide the best value to our clients.',
+    'See how CPM Studio approaches product thinking, system design, and full-stack delivery for education-focused software.',
 }
 
 export default function Process() {
